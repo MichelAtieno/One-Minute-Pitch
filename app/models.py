@@ -14,8 +14,8 @@ class Pitch:
     '''
     all_pitches = []
 
-    def __init__ (self,user_id,category,pitch):
-        self.user_id = user_id
+    def __init__ (self,id,category,pitch):
+        self.id = id
         self.category = category
         self.pitch = pitch
 
