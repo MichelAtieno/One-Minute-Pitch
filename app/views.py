@@ -1,8 +1,10 @@
 from flask import render_template
-from app import app 
+from . import main
+from .forms import PitchForm
+from .models import Pitch
 
 #Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -11,3 +13,4 @@ def index():
 
     title = 'Pitch Haven'
     return render_template('index.html', title = title)
+
