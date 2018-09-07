@@ -1,23 +1,23 @@
-class User:
-    '''
-    User class that defines users
-    '''
-    def __init__(self,id,username,email):
-        self.id = id
-        self.username = username
-        self.email = email
+from . import db
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'User {self.username}'
 
 
-class Pitch:
-    '''
-    Pitch class that defines pitch categories
-    '''
-    all_pitches = []
+class Pitch(db.Model):
+    __tablename__ = 'pitches'
 
-    def __init__ (self,id,category,pitch):
-        self.id = id
-        self.category = category
-        self.pitch = pitch
+    id = db.Column(db.Integer,primary_key = True)
+    pitch_description = db.Column(db.String())
+    pitch_category = db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
     @classmethod
     def save_pitch(self):
