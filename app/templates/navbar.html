@@ -25,10 +25,20 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
-        </li> <!--
+        </li>
         <li class="nav-item">
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li>{{current_user.username}}</li>
+                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                {% else %}
+                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                {%endif%}
+            </ul>
+             <!--
           <a class="nav-link disabled" href="#">Disabled</a>
-        </li> -->
+          -->
+        </li> 
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for
 from . import main
 from ..models import User,Category,Pitch
 from .forms import PitchForm
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 #Views
 @main.route('/')
@@ -38,7 +38,7 @@ def get_new_pitch():
         pitch_post = pitch_form.pitch_post.data
 
     #pitch instance
-    new_pitch = Pitch(category_id = category.id, pitch_title = pitch_title, pitch_post = pitch_post)
+    new_pitch = Pitch(category_id = category.id, pitch_title = pitch_title, pitch_post = pitch_post, user = current_user)
     new_pitch.save_pitch()
     return redirect(url_for('.category', id = category.id))
    
