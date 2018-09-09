@@ -1,5 +1,9 @@
-{% macro pitch_categories(pitches) %}
-{% for pitch in pitches %}
 <div class='container'>
-    
+    {% macro displayCategories(all_pitch_categories) %}
+    {% for category in all_pitch_categories %}
+    <li>
+        <a href="/category/{{category.id}}"><h2>{{category.category_name}}</h2></a>
+    </li>
+    {% endfor %}
+    {% endmacro %}
 </div>
