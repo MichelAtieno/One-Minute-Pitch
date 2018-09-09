@@ -7,8 +7,8 @@
     {% endfor %}
     {% endmacro %}
 
-    {% macro displayPitches(pitches) %}
-        {% for pitch in pitches %}
+    {% macro displayPitches(pitch_list) %}
+        {% for pitch in pitch_list %}
             <div class="row">
                 <div class="col-md-4">
                     <h4>{{ pitch.user.username }}</h4>
