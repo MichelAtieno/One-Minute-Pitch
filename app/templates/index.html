@@ -1,4 +1,6 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
 {% block content%}
 
 <!DOCTYPE html>
@@ -7,7 +9,13 @@
         
     </head>
     <body>
+       <div class="container">
         <h1>Pitch Haven</h1>
+
+        <ul>
+            {{macro.displayCategories(category)}}
+        </ul>
+       </div>
     </body>
 </html>
 {% endblock %}

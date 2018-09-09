@@ -1,6 +1,6 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
 from . import main
-from ..models import Category,Pitch
+from ..models import User,Category,Pitch
 from .forms import PitchForm
 
 #Views
@@ -42,14 +42,5 @@ def get_new_pitch():
     return redirect(url_for('.category', id = category.id))
    
     pitch_title = f'{category.category_name}'
-    return render_template('new_pitch.html', pitch_title = pitch_title , pitch_form= pitch_form, category= category
-
-
-#@main.route('/user/<uname>&user_id')
-#def User_Profile(uname, user_id):
-   # user=User
-
-    #new_pitch = Pitch
-
-    #return render_template()
+    return render_template('new_pitch.html', pitch_title = pitch_title , pitch_form= pitch_form, category= category)
 

@@ -6,4 +6,18 @@
     </li>
     {% endfor %}
     {% endmacro %}
+
+    {% macrodisplayPitches(pitch_list) %}
+        {% for pitch in pitch_list %}
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>{{ pitch.user.username }}</h4>
+                </div>
+                <div class="col-md-4">
+                    <h4>{{ pitch.pitch_title }}</h4>
+                    <h4>{{ pitch.pitch_post }}</h4>
+                </div>
+            </div>
+        {% endfor %}
+    {% endmacro %}
 </div>
