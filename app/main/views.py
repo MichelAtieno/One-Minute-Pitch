@@ -25,6 +25,25 @@ def get_category(id):
 
     return render_template('.category.html', pitch_title =pitch_title, category= category, pitch= pitch)
     
+@main.route('/category/pitch/new/<int:id>', methods= ['GET', 'POST'])
+def get_new_pitch():
+    '''
+    View Category that returns a form to create pitch
+    '''
+    pitch_form = PitchForm()
+    category = Category.query.filter_by(id = id).first()
+    if pitch_form.validate_on_submit():
+        pitch_title = pitch_form.pitch_title.data
+        pitch_post = pitch_form.pitch_post.data
+
+    #pitch instance
+    new_pitch = Pitch(category_id = category.id, pitch_title = pitch_title, pitch_post = pitch_post)
+    new_pitch.save_pitch()
+    return redirect(url_for('.category', id = category.id))
+   
+    pitch_title = f'{category.category_name}'
+    return render_template('new_pitch.html', pitch_title = pitch_title , pitch_form= pitch_form, category= category
+
 
 #@main.route('/user/<uname>&user_id')
 #def User_Profile(uname, user_id):
