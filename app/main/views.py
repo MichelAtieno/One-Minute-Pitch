@@ -1,6 +1,6 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, abort
 from . import main
-from ..models import Category,Pitch, Comment
+from ..models import User,Category,Pitch, Comment
 from .forms import PitchForm, CommentForm
 from flask_login import login_required, current_user
 
@@ -77,3 +77,12 @@ def comments(id):
     title = f'{pitch.title} comment'
 
     return render_template('comments.html', title = title, pitch = pitch, comment= comment)
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)
