@@ -17,7 +17,20 @@
                     <h4>{{ pitch.pitch_title }}</h4>
                     <h4>{{ pitch.pitch_post }}</h4>
                 </div>
+                <a href="pitch/comments/{{pitch.id}}">Display Comments</a>
             </div>
         {% endfor %}
     {% endmacro %}
+
+    {% macro displayComments(comment_list) %}
+    {% for comment in comment_list %}
+        <div>
+            <li>
+                <h3>{{comment.post_comment}}</h3>
+                <p>by {{comment.user.username}}</p>
+            </li>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
 </div>

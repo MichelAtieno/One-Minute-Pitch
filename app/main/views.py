@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for
 from . import main
-from ..models import User,Category,Pitch, Comment
+from ..models import Category,Pitch, Comment
 from .forms import PitchForm, CommentForm
 from flask_login import login_required, current_user
 
@@ -27,6 +27,7 @@ def get_category(id):
     return render_template('.category.html', pitch_title =pitch_title, category= category, pitch= pitch)
     
 @main.route('/category/pitch/new/<int:id>', methods= ['GET', 'POST'])
+@login_required
 def get_new_pitch():
     '''
     View Category that returns a form to create pitch
@@ -46,6 +47,7 @@ def get_new_pitch():
     return render_template('new_pitch.html', pitch_title = pitch_title , pitch_form= pitch_form, category= category)
 
 main.route('/pitch/comment/new/<int:id>', methods = ['GET','POST'])
+@login_required
 def new_comment(id):
     '''
     View Category that returns a form to create new comment
@@ -74,4 +76,4 @@ def comments(id):
     comment = Comment.get_comments(pitch.id)
     title = f'{pitch.title} comment'
 
-    return render_template('comment.html', title = title, pitch = pitch, comment= comment)
+    return render_template('comments.html', title = title, pitch = pitch, comment= comment)
