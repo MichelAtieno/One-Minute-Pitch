@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for
 from . import main
 from ..models import User,Category,Pitch
 from .forms import PitchForm
+from flask_login import login_required
 
 #Views
 @main.route('/')
