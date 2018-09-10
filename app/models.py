@@ -1,5 +1,5 @@
 from . import db, login_manager
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -34,18 +34,13 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class Category(db.Model):
-    __tablename__ = 'categories'
+#class Category(db.Model):
+   # __tablename__ = 'categories'
 
-    id = db.Column(db.Integer,primary_key = True)
-    category_name = db.Column(db.String(255), index= True)
+    #id = db.Column(db.Integer,primary_key = True)
+    #category_name = db.Column(db.String(255), index= True)
 
-    pitches = db.relationship('Pitch', backref='category', lazy='dynamic')
-
-    @classmethod
-    def get_pitch_categories(cls):
-        categories = Category.query.all()
-        return categories
+   # pitches = db.relationship('Pitch', backref='category', lazy='dynamic')
 
 
 class Pitch(db.Model):
@@ -56,24 +51,29 @@ class Pitch(db.Model):
     pitch_category = db.Column(db.String(255))
 
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    category_id = db.Column(db.Integer,db.ForeignKey('categories.id'))
     comments = db.relationship('Comment', backref = 'pitch', lazy = "dynamic")
 
 
-    @classmethod
     def save_pitch(self):
        db.session.add(self)
        db.session.commit()
 
+    
     @classmethod
     def get_pitch(cls,id):
-        pitches = Pitch.query.filter_by(category_id = id).all()
+        pitches = Pitch.query.filter_by(id = id).all()
         return pitches
     
     @classmethod
     def get_all_pitches(cls):
         pitches = Pitch.query.order_by('-id').all()
         return pitches
+
+    @classmethod
+    def get_pitch_categories(cls,new_category):
+        category = Pitch.query.filter_by(pitch_category=new_category).order_by('-id').all()
+        return category
+    
 
 class Comment(db.Model):
     __tablename__ = 'comments'

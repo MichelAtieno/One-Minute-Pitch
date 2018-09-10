@@ -1,6 +1,6 @@
-from flask import render_template,request, redirect, url_for, abort
+from flask import render_template,request, redirect, url_for, flash,abort
 from . import main
-from ..models import User,Category,Pitch, Comment
+from ..models import User,Pitch, Comment
 from .forms import PitchForm, CommentForm, UpdateProfile
 from flask_login import login_required, current_user
 from .. import db,photos
@@ -17,15 +17,6 @@ def index():
     title = 'Pitch Haven'
     return render_template('index.html', title = title)
 
-@main.route('/category/<int:id>')
-def get_category(pitch_post):
-    '''
-    View category function that returns pitches of category
-    '''
-    pitch_post = Category.get_pitch_categories()
-    pitch_title = f'{pitch_post} Category | Pitch'
-
-    return render_template('.category.html', pitch_title =pitch_title, category= pitch_post)
     
 @main.route('/pitch', methods= ['GET', 'POST'])
 @login_required
@@ -37,18 +28,27 @@ def get_new_pitch():
     
     if pitch_form.validate_on_submit():
         pitch_title = pitch_form.pitch_title.data
-        pitch_post = pitch_form.pitch_post.data
+        new_category = pitch_form.pitch_post.data
 
         #pitch instance
-        new_pitch = Pitch(pitch_description=pitch_title, pitch_category=pitch_post, user = current_user)
+        new_pitch = Pitch(pitch_description=pitch_title, pitch_category=new_category, user = current_user)
         new_pitch.save_pitch()
         
-        return redirect(url_for('main.pitch'))
+        return redirect(url_for('main.get_new_pitch'))
 
     all_pitches = Pitch.get_all_pitches()
     title = 'Pitches | One Minute Pitch'
    
     return render_template('pitch.html', title = title, pitch_form= pitch_form, pitches=all_pitches)
+
+@main.route('/category/<new_category>')
+def category(new_category):
+    new_category  = Pitch.get_category(new_category)
+
+    title = f'{new_category} category | One Minute Pitch'
+
+    return render_template('category.html', title=title, category=new_category)
+
 
 main.route('/pitch/comment/new/<int:id>', methods = ['GET','POST'])
 @login_required
