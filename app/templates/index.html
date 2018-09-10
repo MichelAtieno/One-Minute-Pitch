@@ -6,12 +6,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <style>
+            body {
+                font-family: 'Segoe UI';
+                font-size: 25px;
+                background-color: lemonchiffon;
+            }
+            .container-fluid {
+                font-size: 25px;color: white;font-weight: bolder;   
+            }
+            .heading {
+                margin-left: 350px;font-size: 50px;font-weight: bolder;font-style: italic;
+                text-decoration: underline; color: rgb(53, 65, 53);         
+            }
+            .link1 {
+                margin-left: 350px;
+                color: forestgreen; 
+            }
+            .navbar {
+                font-size: 20px;
+                font-weight: bolder;
+            }
+            a:hover {
+                color: goldenrod;
+            }
+            .navhead {
+                font: 35px;
+            }
+
+        </style>
     </head>
     <body>
-       <div class="container">
-        <h1>Pitch Haven</h1>
-        <p><a href="{{url_for('main.get_new_pitch')}}">View Pitches and Categories</a></p>
+       <div class="container-fluid">
+        <h1 class="heading">Welcome to Pitch Haven</h1>
+        <p><a class="link1" href="{{url_for('main.get_new_pitch')}}">Click to View Pitches and Categories</a></p>
 
        
        </div>

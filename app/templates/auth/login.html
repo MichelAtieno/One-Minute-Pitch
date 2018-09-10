@@ -3,11 +3,23 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="panel form-panel">
+<div class="container-fluid">
+    <head>
+        <style>
+                body {
+                    font-family: 'Segoe UI';
+                    font-size: 25px;
+                    background-color: lemonchiffon;
+                }
+                .login {
+                    font-size: 18px;
+                }
+         </style>
+    </head>
+    <div class="panel form-panel">
       {{wtf.quick_form(login_form)}}
       
-      <h4>If you do not have an account, <a href="{{url_for('auth.register')}}">Sign Up</a> here.</h4>
+      <h4 class="login">If you do not have an account, <a href="{{url_for('auth.register')}}">Sign Up</a> here.</h4>
   </div>
  </div>
 
