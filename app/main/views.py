@@ -4,7 +4,6 @@ from ..models import User,Pitch, Comment
 from .forms import PitchForm, CommentForm, UpdateProfile
 from flask_login import login_required, current_user
 from .. import db,photos
-import markdown2
 
 #Views
 @main.route('/')
@@ -121,4 +120,3 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
-    
