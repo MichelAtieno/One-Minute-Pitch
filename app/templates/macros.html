@@ -27,7 +27,6 @@
 
 {% macro displayComments(all_comments) %} 
 {% for comment in all_comments %}
-<hr>
 <div class="comment">
     <p>
         {% if comment.user.profile_pic_path %}
@@ -50,12 +49,11 @@
     </p>
     <p>{{category.pitch_description}}</p>
     <p class="small"> Category: {{category.pitch_category}} </p>
-    <hr>
     <ul class="list-inline">
         <li class="list-inline-item">
             <a href="/pitch/{{category.id}}">Add Comment</a>
         </li>
-        
+        <hr>
     </ul>
 </div>
 {% endfor %} 
