@@ -19,21 +19,15 @@
         - Python 3.6
         - Ubuntu software
 
-###     Clone the Repo
-
-###     Install [Postgres](https://www.postgresql.org/download/)
-
-###     Create a Virtual Environment
-
-###     Install dependancies
-
-###     Prepare environment variables
-
-###     Run Database Migrations
-
-###     Run the app in development
-
-###     Open the browser on `http://localhost:5000/`
+<ul>
+    <li>Clone the Repo</li>
+    <li>Install [Postgres](https://www.postgresql.org/download/)</li>
+    <li>Create a Virtual Environment</li>
+    <li> Prepare environment variables</li>
+    <li>Run Database Migrations</li>
+    <li>Run the app in development</li>
+    <li>Open the browser on `http://localhost:5000/`</li>
+<ul>            
 
 ## Known bugs
 Receiving internal server errors as user signs in or registers or leaves comment.
