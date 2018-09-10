@@ -69,6 +69,11 @@ class Pitch(db.Model):
     def get_pitch(cls,id):
         pitches = Pitch.query.filter_by(category_id = id).all()
         return pitches
+    
+    @classmethod
+    def get_all_pitches(cls):
+        pitches = Pitch.query.order_by('-id').all()
+        return pitches
 
 class Comment(db.Model):
     __tablename__ = 'comments'
