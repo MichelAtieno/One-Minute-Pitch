@@ -3,11 +3,11 @@ from app.models import Pitch, User, Comment
 from flask_login import current_user
 from app import db
 
-class TestComment(unittest.TestCase):
+class TestPitch(unittest.TestCase):
 
     def setUp(self):
         self.user_michel = User(username='michel',password='password',email='abc@defg.com')
-        self.new_pitch = Pitch(pitch_description = "This is my pitch", pitch_category='Business',user=self.user_michel)
+        self.new_pitch = Pitch(pitch_description = "This is a pitch", pitch_category='Business',user=self.user_michel)
         self.new_comment = Comment(post_comment = "This is my comment", pitch=self.new_pitch, user=self.user_michel)
     
     def tearDown(self):
