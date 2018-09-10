@@ -19,7 +19,6 @@ class TestPitch(unittest.TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.new_comment,Comment))
 
-
     def test_check_instance_variables(self):
         self.assertEquals(self.new_comment.post_comment,"This is my comment")
         self.assertEquals(self.new_comment.pitch,self.new_pitch)
