@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
+{% import 'macros.html' as macro %}
 
 {% block content%}
 
@@ -11,10 +11,8 @@
     <body>
        <div class="container">
         <h1>Pitch Haven</h1>
-
-        <ul>
-            {{macro.displayCategories(category)}}
-        </ul>
+        {{macro.displayCategory(category)}}
+       
        </div>
     </body>
 </html>

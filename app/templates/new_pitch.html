@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% import "bootstrap/wtf.html" as wtf %}
+{% import 'macros.html' as macro%}
 
 {% block content %}
     <div class="container">
@@ -8,6 +9,8 @@
 
             {{ wtf.quick_form(pitch_form) }}
         </div>
+
+        {{macro.displayPitches(pitches)}}
 
     </div>
 

@@ -12,9 +12,10 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+    category = Category.get_pitch_categories()
 
     title = 'Pitch Haven'
-    return render_template('index.html', title = title)
+    return render_template('index.html', title = title, category = category)
 
 @main.route('/category/<int:id>')
 def get_category(id):
