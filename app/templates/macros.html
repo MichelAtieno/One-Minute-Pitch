@@ -1,26 +1,29 @@
+<div class="container">
 {% macro displayPitches(all_pitch_categories) %} 
 {% for pitch in all_pitch_categories %}
+
 <div class="col-md-12">
 
     {% if pitch.user.profile_pic_path %}
-    <p>
+    <p  style="font-size: 18px;">
         <img src="{{url_for('static',filename = pitch.user.profile_pic_path)}}" alt="" class="img-thumbnail">
         <a href="/user/{{pitch.user.username}}&{{pitch.user.id}}">{{pitch.user.username}}</a>
     </p>
     {% else %}
-    <p>
+    <p style="font-size: 18px;">
         <a href="/user/{{pitch.user.username}}&{{pitch.user.id}}">{{pitch.user.username|capitalize}}</a>
     </p>
     {% endif %}
 
     <p>{{pitch.pitch_description}}</p>
-    <p class="small"> Category: {{pitch.pitch_category}} </p>
-    <hr>
+    <p class="small"  style="font-size: 18px;"> Category: {{pitch.pitch_category}} </p>
     <ul class="list-inline">
-        <li class="list-inline-item">
+        <li class="list-inline-item"  style="font-size: 18px;">
             <a href="/pitch/{{pitch.id}}">Add Comment</a>
         </li>
     </ul>
+    <hr>
+    <hr>
 </div>
 {% endfor %} 
 {% endmacro %} 
@@ -59,3 +62,4 @@
 </div>
 {% endfor %} 
 {% endmacro %}
+</div>
