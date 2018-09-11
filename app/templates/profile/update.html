@@ -2,7 +2,19 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
+<head>
+    <style>
+          body {
+                font-family: 'Segoe UI';
+                font-size: 25px;
+                background-color: lemonchiffon;
+                }
+  
+    </style>
+  </head>
+  <body>
 <div class="container">
   {{wtf.quick_form(form)}}
 </div>
+</body>
 {% endblock %}
