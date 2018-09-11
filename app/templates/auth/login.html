@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container-fluid">
+
     <head>
         <style>
                 body {
@@ -16,11 +16,19 @@
                 }
          </style>
     </head>
-    <div class="panel form-panel">
+    <body>
+     <div class="container-fluid">
+            <div class="row">
+                    <div class="col-md-2"> </div>
+                    <div class="col-md-8">
       {{wtf.quick_form(login_form)}}
       
       <h4 class="login">If you do not have an account, <a href="{{url_for('auth.register')}}">Sign Up</a> here.</h4>
-  </div>
- </div>
+    </div>
+    <div class="col-md-2"></div>
+    </div>
+    </div>
+</body>
+ 
 
 {% endblock %}
